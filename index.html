@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2><strong>Login</strong></h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" size="30" required>
+        <br>
+        <input type="password" id="password" placeholder="Password" size="20" required>
+        <br>
+        <strong>Favorite color:</strong>
+        <input type="color" id="colorcheck" value="#000fff">
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <br>
+    <h2><strong>Registration</strong></h2>
+    <form id="registerForm">
+        <input type="text" id="newUsername" placeholder="New Username" size="30" required>
+        <br>
+        <input type="password" id="newPassword" placeholder="New Password" size="20" required>
+        <br>
+        <strong>Favorite color:</strong>
+        <input type="color" id="newColorcheck" value="#000fff">
+        <br>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Wysyłanie danych do serwera logowania
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const color = document.getElementById('colorcheck').value;
+
+            // Przykładowa metoda przekazania danych do serwera - można zastąpić właściwą implementacją
+            LOGINSERVER.login(username, password, color);
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Wysyłanie danych do serwera rejestracji
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const newColor = document.getElementById('newColorcheck').value;
+
+            // Przykładowa metoda przekazania danych do serwera - można zastąpić właściwą implementacją
+            LOGINSERVER.register(newUsername, newPassword, newColor);
+        });
+
+        // Serwer logowania
+        const LOGINSERVER = {
+            login: function(username, password, color) {
+                // Tutaj można dodać właściwą logikę logowania, np. wysłanie żądania HTTP do serwera
+                console.log("Login with username: " + username + ", password: " + password + ", and color: " + color);
+            },
+            register: function(username, password, color) {
+                // Tutaj można dodać właściwą logikę rejestracji, np. wysłanie żądania HTTP do serwera
+                console.log("Register with username: " + username + ", password: " + password + ", and color: " + color);
+            }
+        };
+    </script>
+</body>
+</html>
